@@ -22,6 +22,9 @@ function preload() {
 }
 
 function setup() {
+  //permissions
+  userStartAudio();
+  
   //background
   createCanvas(hor, ver);
   background_sound.play();
@@ -39,8 +42,8 @@ function draw() {
   fill(40, 40, 40);
   stroke(40, 40, 40);
   textSize(32);
-  text('Higher', hor, (vm/2)*1);
-  text('Lower', hor, (vm/2)*3);
+  text('Higher', hm, (vm/2)*1);
+  text('Lower', hm, (vm/2)*3);
   pop();
   
   
