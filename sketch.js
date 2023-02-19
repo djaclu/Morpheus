@@ -5,10 +5,10 @@ let count = 0;
 let rates = [1, 1];
 let last_start = 0;
 let game_duration = 40*60*1000;
-let screenWidth = 1170;
-let screenHeight = 2532;
-let xm = 1170/2;
-let ym = 2532/2;
+var w = window.innerWidth;
+var h = window.innerHeight;
+let xm = w/2;
+let ym = h/2;
 
 
 function preload() {
@@ -25,7 +25,7 @@ function preload() {
 
 function setup() {
 //background
-  createCanvas(screenWidth, screenHeight);
+  canvas = createCanvas(w, h);
   background_sound.play();
   background_sound.loop();
 }
@@ -69,7 +69,6 @@ function draw() {
 function mousePressed() {
 
   if(p == true){
-
     if (mouseY <= ym) {
     selection = "higher";
   } else {
@@ -80,9 +79,7 @@ function mousePressed() {
     count = 0;
     last_start = millis();
   }
-
 }
-
 
 function evaluate() {
 
@@ -94,4 +91,13 @@ function evaluate() {
 
 function touchStarted () {
   userStartAudio();
+}
+
+window.onresize = function() {
+  // assigns new values for width and height variables
+  w = window.innerWidth;
+  h = window.innerHeight;
+  canvas.size(w,h);
+  xm = w/2;
+  ym = h/2;
 }
