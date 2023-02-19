@@ -18,8 +18,11 @@ function preload() {
   correct = loadSound('correct.mp3');
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 function setup() {
-  fullscreen();
 //background
   createCanvas(displayWidth, displayHeight);
   background_sound.play();
@@ -86,6 +89,11 @@ function mousePressed() {
 
 function touchStarted(){
   userStartAudio();
+  
+  var fs = fullscreen();
+  if (!fs) {
+    fullscreen(true);
+  }
 }
 
 function evaluate() {
@@ -94,8 +102,4 @@ function evaluate() {
       (rates[1] < rates[0] && selection == "lower")) {
     correct.play();
   }
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
 }
