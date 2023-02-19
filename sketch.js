@@ -6,14 +6,6 @@ let rates = [1, 1];
 let last_start = 0;
 let game_duration = 40*60*1000;
 
-//screen dimensions
-let ver = 2532;
-let hor = 1170; 
-
-let vm = ver/2; //vertical midpoint
-let hm = hor/2; //horizontal midpoint
-
-
 
 function preload() {
   //permissions
@@ -28,24 +20,30 @@ function preload() {
 
 function setup() {
 //background
-  createCanvas(hor, ver);
+  createCanvas(displayWidth, displayHeight);
   background_sound.play();
   background_sound.loop();
+  
+  let hm = displayHeight/2;
+  let wm = displayWidth/2;
 }
 
 function draw() {
   //visual interface
   background(0);
   stroke(128, 128, 128);
-  line(0, vm, vm, vm);
+  let hm = displayHeight/2;
+  let wm = displayWidth/2;
+  line(0, wm, wm, wm);
+  
   
   push();
   textAlign(CENTER,CENTER);
   fill(40, 40, 40);
   stroke(40, 40, 40);
   textSize(128);
-  text('Higher', hm, (vm/2)*1);
-  text('Lower', hm, (vm/2)*3);
+  text('Higher', hm, (wm/2)*1);
+  text('Lower', hm, (wm/2)*3);
   pop();
   
   
@@ -72,7 +70,7 @@ function mousePressed() {
   
   if(p == true){
     
-    if (mouseY <= vm) {
+    if (mouseY <= hm) {
     selection = "higher";
   } else {
     selection = "lower";
