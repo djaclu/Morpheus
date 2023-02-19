@@ -14,7 +14,7 @@ let ym = 2532/2;
 function preload() {
   //permissions
   getAudioContext().suspend();
-  
+
   //assets
   soundFormats('mp3');
   background_sound = loadSound('Weightless.mp3');
@@ -25,6 +25,8 @@ function preload() {
 
 function setup() {
 //background
+  let screenWidth = displayWidth;
+  let screenHeight = displayHeight;
   createCanvas(screenWidth, screenHeight);
   background_sound.play();
   background_sound.loop();
@@ -34,20 +36,20 @@ function draw() {
   //visual interface
   background(0);
   stroke(128, 128, 128);
-  line(0, xm, xm, xm);
-  
-  
+  line(0, ym, screenWidth, ym);
+
+
   push();
   textAlign(CENTER,CENTER);
   fill(40, 40, 40);
   stroke(40, 40, 40);
   textSize(128);
-  text('Higher', ym, (xm/2)*1);
-  text('Lower', ym, (xm/2)*3);
+  text('Higher', xm, screenHeight*(1/4));
+  text('Lower', xm, screenHeight*(3/4));
   pop();
-  
-  
-  
+
+
+
   //audio interface
   if (p == false && (millis()-last_start) > 3000) {
     if (tone.isPlaying() == false){
@@ -60,16 +62,16 @@ function draw() {
       }
     }
   }
-  
+
   //volume control
   let progress = map(millis(), 0, game_duration, 1, 0);
   background_sound.setVolume(progress);
 }
 
 function mousePressed() {
-  
+
   if(p == true){
-    
+
     if (mouseY <= ym) {
     selection = "higher";
   } else {
@@ -80,12 +82,12 @@ function mousePressed() {
     count = 0;
     last_start = millis();
   }
- 
+
 }
 
 
 function evaluate() {
-  
+
   if ((rates[1] > rates[0] && selection == "higher") ||
       (rates[1] < rates[0] && selection == "lower")) {
     correct.play();
@@ -95,4 +97,3 @@ function evaluate() {
 function touchStarted () {
   userStartAudio();
 }
-
