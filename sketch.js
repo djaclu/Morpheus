@@ -12,19 +12,17 @@ function preload() {
   getAudioContext().suspend();
   
   //assets
-  soundFormats('mp3', 'wav');
+  soundFormats('mp3');
   background_sound = loadSound('Weightless.mp3');
   tone = loadSound('tone.mp3');
   correct = loadSound('correct.mp3');
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
 
 function setup() {
 //background
   createCanvas(displayWidth, displayHeight);
+  pixelDensity(3);
   background_sound.play();
   background_sound.loop();
   
@@ -89,11 +87,6 @@ function mousePressed() {
 
 function touchStarted(){
   userStartAudio();
-  
-  var fs = fullscreen();
-  if (!fs) {
-    fullscreen(true);
-  }
 }
 
 function evaluate() {
