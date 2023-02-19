@@ -19,6 +19,7 @@ function preload() {
 }
 
 function setup() {
+  fullscreen();
 //background
   createCanvas(displayWidth, displayHeight);
   background_sound.play();
