@@ -25,8 +25,6 @@ function preload() {
 
 function setup() {
 //background
-  let screenWidth = displayWidth;
-  let screenHeight = displayHeight;
   createCanvas(screenWidth, screenHeight);
   background_sound.play();
   background_sound.loop();
