@@ -22,7 +22,7 @@ function preload() {
   //assets
   soundFormats('mp3', 'wav');
   background_sound = loadSound('Weightless.mp3');
-  tone = loadSound('tone.wav');
+  tone = loadSound('tone.mp3');
   correct = loadSound('correct.mp3');
 }
 
