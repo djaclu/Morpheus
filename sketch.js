@@ -13,7 +13,12 @@ let hor = 1170;
 let vm = ver/2; //vertical midpoint
 let hm = hor/2; //horizontal midpoint
 
+
+
 function preload() {
+  //permissions
+  getAudioContext().suspend();
+  
   //assets
   soundFormats('mp3', 'wav');
   background_sound = loadSound('Weightless.mp3');
@@ -22,10 +27,7 @@ function preload() {
 }
 
 function setup() {
-  //permissions
-  userStartAudio();
-  
-  //background
+//background
   createCanvas(hor, ver);
   background_sound.play();
   background_sound.loop();
@@ -41,7 +43,7 @@ function draw() {
   textAlign(CENTER,CENTER);
   fill(40, 40, 40);
   stroke(40, 40, 40);
-  textSize(32);
+  textSize(128);
   text('Higher', hm, (vm/2)*1);
   text('Lower', hm, (vm/2)*3);
   pop();
@@ -68,7 +70,10 @@ function draw() {
 
 function mousePressed() {
   
+  //permissions
+  userStartAudio();
   
+  //userinput
   if(p == true){
     
     if (mouseY <= vm) {
