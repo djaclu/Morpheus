@@ -22,7 +22,7 @@ function preload() {
 function setup() {
 //background
   createCanvas(displayWidth, displayHeight);
-  pixelDensity(3);
+  pixelDensity(1);
   background_sound.play();
   background_sound.loop();
   
