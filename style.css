@@ -3,5 +3,7 @@ html, body {
   padding: 0;
 }
 canvas {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-items: center;
 }
