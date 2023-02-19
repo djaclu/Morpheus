@@ -95,3 +95,7 @@ function evaluate() {
     correct.play();
   }
 }
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
