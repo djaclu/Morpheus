@@ -70,10 +70,6 @@ function draw() {
 
 function mousePressed() {
   
-  //permissions
-  userStartAudio();
-  
-  //userinput
   if(p == true){
     
     if (mouseY <= vm) {
@@ -87,6 +83,10 @@ function mousePressed() {
     last_start = millis();
   }
  
+}
+
+function touchStarted(){
+  userStartAudio();
 }
 
 function evaluate() {
