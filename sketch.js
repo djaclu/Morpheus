@@ -34,7 +34,7 @@ function draw() {
   //visual interface
   background(0);
   stroke(128, 128, 128);
-  line(0, ym, screenWidth, ym);
+  line(0, ym, w, ym);
 
 
   push();
@@ -42,8 +42,8 @@ function draw() {
   fill(40, 40, 40);
   stroke(40, 40, 40);
   textSize(128);
-  text('Higher', xm, screenHeight*(1/4));
-  text('Lower', xm, screenHeight*(3/4));
+  text('Higher', xm, h*(1/4));
+  text('Lower', xm, h*(3/4));
   pop();
 
 
