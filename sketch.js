@@ -5,6 +5,10 @@ let count = 0;
 let rates = [1, 1];
 let last_start = 0;
 let game_duration = 40*60*1000;
+let screenWidth = 1170;
+let screenHeight = 2532;
+let xm = 1170/2;
+let ym = 2532/2;
 
 
 function preload() {
@@ -21,21 +25,16 @@ function preload() {
 
 function setup() {
 //background
-  createCanvas(displayWidth, displayHeight);
+  createCanvas(screenWidth, screenHeight);
   background_sound.play();
   background_sound.loop();
-  
-  let hm = displayHeight/2;
-  let wm = displayWidth/2;
 }
 
 function draw() {
   //visual interface
   background(0);
   stroke(128, 128, 128);
-  let hm = displayHeight/2;
-  let wm = displayWidth/2;
-  line(0, wm, displayWidth, wm);
+  line(0, xm, xm, xm);
   
   
   push();
@@ -43,8 +42,8 @@ function draw() {
   fill(40, 40, 40);
   stroke(40, 40, 40);
   textSize(128);
-  text('Higher', hm, (wm/2)*1);
-  text('Lower', hm, (wm/2)*3);
+  text('Higher', ym, (xm/2)*1);
+  text('Lower', ym, (xm/2)*3);
   pop();
   
   
@@ -71,7 +70,7 @@ function mousePressed() {
   
   if(p == true){
     
-    if (mouseY <= hm) {
+    if (mouseY <= ym) {
     selection = "higher";
   } else {
     selection = "lower";
@@ -84,9 +83,6 @@ function mousePressed() {
  
 }
 
-function touchStarted(){
-  userStartAudio();
-}
 
 function evaluate() {
   
@@ -95,3 +91,8 @@ function evaluate() {
     correct.play();
   }
 }
+
+function touchStarted () {
+  userStartAudio();
+}
+
