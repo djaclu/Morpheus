@@ -34,7 +34,7 @@ function draw() {
   stroke(128, 128, 128);
   let hm = displayHeight/2;
   let wm = displayWidth/2;
-  line(0, wm, wm, wm);
+  line(0, wm, displayWidth, wm);
   
   
   push();
