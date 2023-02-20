@@ -65,6 +65,9 @@ function draw() {
   //volume control
   let progress = map(millis(), 0, game_duration, 1, 0);
   background_sound.setVolume(progress);
+  tone.setVolume(progress);
+  correct.setVolume(progress);
+  wrong.setVolume(progress);
 }
 
 function evaluate() {
