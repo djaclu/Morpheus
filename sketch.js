@@ -20,6 +20,7 @@ function preload() {
   background_sound = loadSound('Weightless.mp3');
   tone = loadSound('tone.mp3');
   correct = loadSound('correct.mp3');
+  wrong = loadSound('wrong.mp3');
 }
 
 
@@ -71,7 +72,10 @@ function evaluate() {
   if ((rates[1] > rates[0] && selection == "higher") ||
       (rates[1] < rates[0] && selection == "lower")) {
     correct.play();
+  } else {
+    wrong.play();
   }
+  
 }
 
 window.onresize = function() {
