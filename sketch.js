@@ -5,16 +5,16 @@ let count = 0;
 let rates = [1, 1];
 let last_start = 0;
 let game_duration = 40*60*1000;
-var w = window.innerWidth;
-var h = window.innerHeight;
-let xm = w/2;
-let ym = h/2;
+let screenWidth = 1170;
+let screenHeight = 2532;
+let xm = 1170/2;
+let ym = 2532/2;
 
 
 function preload() {
   //permissions
   getAudioContext().suspend();
-
+  
   //assets
   soundFormats('mp3');
   background_sound = loadSound('Weightless.mp3');
@@ -25,7 +25,7 @@ function preload() {
 
 function setup() {
 //background
-  canvas = createCanvas(w, h);
+  createCanvas(screenWidth, screenHeight);
   background_sound.play();
   background_sound.loop();
 }
@@ -34,20 +34,20 @@ function draw() {
   //visual interface
   background(0);
   stroke(128, 128, 128);
-  line(0, ym, w, ym);
-
-
+  line(0, xm, xm, xm);
+  
+  
   push();
   textAlign(CENTER,CENTER);
   fill(40, 40, 40);
   stroke(40, 40, 40);
   textSize(128);
-  text('Higher', xm, h*(1/4));
-  text('Lower', xm, h*(3/4));
+  text('Higher', ym, (xm/2)*1);
+  text('Lower', ym, (xm/2)*3);
   pop();
-
-
-
+  
+  
+  
   //audio interface
   if (p == false && (millis()-last_start) > 3000) {
     if (tone.isPlaying() == false){
@@ -60,15 +60,16 @@ function draw() {
       }
     }
   }
-
+  
   //volume control
   let progress = map(millis(), 0, game_duration, 1, 0);
   background_sound.setVolume(progress);
 }
 
 function mousePressed() {
-
+  
   if(p == true){
+    
     if (mouseY <= ym) {
     selection = "higher";
   } else {
@@ -79,10 +80,12 @@ function mousePressed() {
     count = 0;
     last_start = millis();
   }
+ 
 }
 
-function evaluate() {
 
+function evaluate() {
+  
   if ((rates[1] > rates[0] && selection == "higher") ||
       (rates[1] < rates[0] && selection == "lower")) {
     correct.play();
@@ -91,13 +94,20 @@ function evaluate() {
 
 function touchStarted () {
   userStartAudio();
-}
-
-window.onresize = function() {
-  // assigns new values for width and height variables
-  w = window.innerWidth;
-  h = window.innerHeight;
-  canvas.size(w,h);
-  xm = w/2;
-  ym = h/2;
+  
+  let t = touches;
+  
+  if(p == true){
+    
+    if (t[0].y <= ym) {
+    selection = "higher";
+  } else {
+    selection = "lower";
+  }
+    evaluate();
+    p = false;
+    count = 0;
+    last_start = millis();
+  }
+  
 }
